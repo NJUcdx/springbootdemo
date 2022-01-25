@@ -48,7 +48,7 @@ pipeline{
                     try {
                         echo "启动服务"
                         // -v /etc/localtime:/etc/localtime:ro 同步时间
-                        sh 'docker run -v /etc/localtime:/etc/localtime:ro --name ${project} -d -p 8082:8082 ${parameters.image_name}'
+                        sh 'docker run -v /etc/localtime:/etc/localtime:ro --name ${parameters.project} -d -p 8082:8082 ${parameters.image_name}'
                     } catch(ex) {
                         sh 'docker start ${parameters.project}'
                     }
