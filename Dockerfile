@@ -5,4 +5,4 @@ ADD ./target/springbootdemo-0.0.1-SNAPSHOT.war /home/springboot/springbootdemo.w
 # 声明服务运行在8080端口
 EXPOSE 8088
 # 执行命令
-CMD ["java","-jar","/home/springboot/springboot-dockerfile.jar"]
+CMD ["java","-jar","/home/springboot/springboot-dockerfile.war"]
