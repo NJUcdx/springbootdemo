@@ -12,7 +12,6 @@ pipeline{
 
         stage('获取代码'){
             steps {
-		sh 'source /etc/profile'
                 echo "从 git:${REPOSITORY} 拉取代码"
                 //清空当前目录
                 deleteDir()
