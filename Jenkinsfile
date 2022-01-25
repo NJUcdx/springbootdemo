@@ -3,11 +3,9 @@ pipeline{
     agent any
     //定义仓库地址
     parameters {
-        string(
-            REPOSITORY:"git@github.com:NJUcdx/springbootdemo.git",
-            project = "springbootdemo",
-            image_name = "springbootdemo"
-        )
+        string(name: 'REPOSITORY', defaultValue: 'git@github.com:NJUcdx/springbootdemo.git', description: 'github address')
+        string(name: 'project', defaultValue: 'springbootdemo', description: 'project name')
+        string(name: 'image_name', defaultValue: 'springbootdemo', description: 'image name')
     }
 
     stages {
