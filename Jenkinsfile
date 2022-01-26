@@ -25,7 +25,9 @@ pipeline{
             steps {
                 echo "开始构建"
                 //构建镜像
-                sh 'mvn package -Dmaven.test.skip=true -Ptest docker:build'
+                sh 'mvn clean package'
+                sh 'cp target/springbootdemo-0.0.1-SNAPSHOT.war .'
+                sh ''
             }
         }
 
