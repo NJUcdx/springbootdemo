@@ -12,11 +12,11 @@ pipeline{
 
         stage('获取代码'){
             steps {
-                echo "从 git:${REPOSITORY} 拉取代码"
+                echo "从 git:${params.REPOSITORY} 拉取代码"
                 //清空当前目录
                 deleteDir()
                 //拉取代码
-                git "${REPOSITORY}"
+                git "${params.REPOSITORY}"
             }
         }
 
@@ -34,7 +34,7 @@ pipeline{
                 script {
                     try {
                         echo "停止服务"
-                        sh 'docker stop ${project}'
+                        sh 'docker stop ${params.project}'
                     } catch(ex) {
 
                     }
@@ -48,9 +48,9 @@ pipeline{
                     try {
                         echo "启动服务"
                         // -v /etc/localtime:/etc/localtime:ro 同步时间
-                        sh 'docker run -v /etc/localtime:/etc/localtime:ro --name ${project} -d -p 8082:8082 ${image_name}'
+                        sh 'docker run -v /etc/localtime:/etc/localtime:ro --name ${params.project} -d -p 8082:8082 ${params.image_name}'
                     } catch(ex) {
-                        sh 'docker start ${project}'
+                        sh 'docker start ${params.project}'
                     }
                 }
             }
