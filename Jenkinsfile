@@ -28,23 +28,11 @@ pipeline{
                     //构建镜像
                     sh 'mvn clean package'
                     sh 'cp target/springbootdemo-0.0.1-SNAPSHOT.war .'
+                    sh 'docker rm -f ${project}'
                     sh 'docker image rm ${image_name}'
                     sh 'docker build -f Dockerfile -t springbootdemo .'
                 }
 
-            }
-        }
-
-        stage('停止原有服务'){
-            steps{
-                script {
-                    try {
-                        echo "停止服务"
-//                         sh 'docker rm -f ${project}'
-                    } catch(ex) {
-
-                    }
-                }
             }
         }
 
