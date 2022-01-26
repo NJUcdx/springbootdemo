@@ -29,7 +29,7 @@ pipeline{
                     sh 'mvn clean package'
                     sh 'cp target/springbootdemo-0.0.1-SNAPSHOT.war .'
 //                     sh 'docker image rm ${params.image_name}'
-                    sh 'docker build -f Dockerfile -t ${params.image_name} .'
+                    sh 'docker build -f Dockerfile -t springbootdemo .'
                 }
 
             }
