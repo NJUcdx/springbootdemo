@@ -27,7 +27,8 @@ pipeline{
                 //构建镜像
                 sh 'mvn clean package'
                 sh 'cp target/springbootdemo-0.0.1-SNAPSHOT.war .'
-                sh ''
+                sh 'docker image rm ${params.image_name}'
+                sh 'docker build -f Dockerfile -t ${params.image_name} .'
             }
         }
 
@@ -36,7 +37,7 @@ pipeline{
                 script {
                     try {
                         echo "停止服务"
-                        sh 'docker stop ${params.project}'
+                        sh 'docker rm -f  ${params.project}'
                     } catch(ex) {
 
                     }
@@ -50,7 +51,7 @@ pipeline{
                     try {
                         echo "启动服务"
                         // -v /etc/localtime:/etc/localtime:ro 同步时间
-                        sh 'docker run -v /etc/localtime:/etc/localtime:ro --name ${params.project} -d -p 8082:8082 ${params.image_name}'
+                        sh 'docker run --name ${params.project} -d -p 8088:8088 ${params.image_name}'
                     } catch(ex) {
                         sh 'docker start ${params.project}'
                     }
