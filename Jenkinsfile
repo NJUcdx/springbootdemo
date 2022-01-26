@@ -12,7 +12,6 @@ pipeline{
 
         stage('获取代码'){
             steps {
-                sh 'pwd'
                 echo "从 git:${params.REPOSITORY} 拉取代码"
                 //清空当前目录
                 deleteDir()
