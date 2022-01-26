@@ -28,12 +28,7 @@ pipeline{
                     //构建镜像
                     sh 'mvn clean package'
                     sh 'cp target/springbootdemo-0.0.1-SNAPSHOT.war .'
-                    try{
-                        sh 'docker image rm ${params.image_name}'
-                    }catch (ex){
-                        sh 'echo no image removed.'
-                    }
-
+//                     sh 'docker image rm ${params.image_name}'
                     sh 'docker build -f Dockerfile -t ${params.image_name} .'
                 }
 
