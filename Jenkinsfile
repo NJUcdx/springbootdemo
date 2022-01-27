@@ -28,7 +28,7 @@ pipeline{
                     //构建镜像
                     sh 'mvn clean package'
                     withSonarQubeEnv('sonarqube') {
-                        sh "mvn sonar:sonar -Dproject.settings=sonar-project.properties"
+                        sh "mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true sonar:sonar -Dproject.settings=sonar-project.properties"
                     }
                     sh 'cp target/springbootdemo-0.0.1-SNAPSHOT.war .'
                     sh 'docker rm -f ${project}'
