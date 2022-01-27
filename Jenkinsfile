@@ -22,10 +22,8 @@ pipeline{
 
         stage('Code Analysis') {
             steps{
-                container("maven") {
-                    withSonarQubeEnv('sonarqube') {
-                        sh "mvn sonar:sonar -Dproject.settings=sonar-project.properties"
-                    }
+                withSonarQubeEnv('sonarqube') {
+                    sh "mvn sonar:sonar -Dproject.settings=sonar-project.properties"
                 }
             }
         }
