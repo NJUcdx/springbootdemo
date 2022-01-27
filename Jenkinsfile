@@ -10,13 +10,17 @@ pipeline{
     
     stages {
 
-        stage('获取代码'){
+        stage('代码分析'){
             steps {
                 echo "从 git:${REPOSITORY} 拉取代码"
                 //清空当前目录
                 deleteDir()
                 //拉取代码
                 git "${REPOSITORY}"
+//                 sh 'mvn clean package'
+//                 withSonarQubeEnv('sonarqube') {
+//                     sh "mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true -DskipTests=false sonar:sonar -Dproject.settings=sonar-project.properties"
+//                 }
             }
         }
 
@@ -24,6 +28,7 @@ pipeline{
         stage('构建镜像'){
             steps {
                 script{
+//                     sh 'ssh root@172.19.241.102 sh /home/suc/common-start.sh /home/suc'
                     echo "开始构建"
                     //构建镜像
                     sh 'mvn clean package'
