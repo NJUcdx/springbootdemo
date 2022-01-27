@@ -20,6 +20,14 @@ pipeline{
             }
         }
 
+        stage('Code Analysis') {
+            container("maven") {
+                withSonarQubeEnv('sonarqube') {
+                    sh "mvn sonar:sonar -Dproject.settings=sonar-project.properties"
+                }
+            }
+        }
+
 
         stage('构建镜像'){
             steps {
