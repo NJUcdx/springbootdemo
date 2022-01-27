@@ -20,14 +20,6 @@ pipeline{
             }
         }
 
-        stage('Code Analysis') {
-            steps{
-                withSonarQubeEnv('sonarqube') {
-                    sh "mvn sonar:sonar -Dproject.settings=sonar-project.properties"
-                }
-            }
-        }
-
 
         stage('构建镜像'){
             steps {
@@ -35,6 +27,9 @@ pipeline{
                     echo "开始构建"
                     //构建镜像
                     sh 'mvn clean package'
+                    withSonarQubeEnv('sonarqube') {
+                        sh "mvn sonar:sonar -Dproject.settings=sonar-project.properties"
+                    }
                     sh 'cp target/springbootdemo-0.0.1-SNAPSHOT.war .'
                     sh 'docker rm -f ${project}'
                     sh 'docker image rm ${image_name}'
