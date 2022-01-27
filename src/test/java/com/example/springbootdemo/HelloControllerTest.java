@@ -21,7 +21,7 @@ public class HelloControllerTest {
     public void hello() {
         HelloController helloController = new HelloController();
         String res = helloController.hello();
-        String expected = "hello world, fuck you !";
+        String expected = "hello world, fuck you !!!";
         Assert.assertEquals(expected, res);
     }
 }

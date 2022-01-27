@@ -9,18 +9,25 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class SpringbootdemoApplicationTests {
 
-    @Autowired
-    HelloController helloController;
+//    @Autowired
+//    HelloController helloController;
 
     @Test
     void contextLoads() {
     }
 
+//    @Test
+//    public void hello() {
+//        String res = helloController.hello();
+//        String expected = "hello world, fuck you !!!";
+//        Assertions.assertEquals(expected, res);
+//    }
+
     @Test
-    public void hello() {
-        String res = helloController.hello();
-        String expected = "hello world, fuck you !";
-        Assertions.assertEquals(expected, res);
+    public void hello1() {
+        HelloControllerTest helloControllerTest = new HelloControllerTest();
+        helloControllerTest.hello();
     }
+
 
 }
