@@ -23,11 +23,11 @@ class SpringbootdemoApplicationTests {
 //        Assertions.assertEquals(expected, res);
 //    }
 
-    @Test
-    public void hello1() {
-        HelloControllerTest helloControllerTest = new HelloControllerTest();
-        helloControllerTest.hello();
-    }
+//    @Test
+//    public void hello1() {
+//        HelloControllerTest helloControllerTest = new HelloControllerTest();
+//        helloControllerTest.hello();
+//    }
 
 
 }
