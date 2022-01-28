@@ -1,4 +1,5 @@
-pwd
+# shellcheck disable=SC2164
+cd springbootdemo
 echo "开始构建"
 mvn clean package
 cp target/springbootdemo-0.0.1-SNAPSHOT.war .
