@@ -29,9 +29,9 @@ pipeline{
             steps {
                 script{
                     echo "查看当前目录"
-                    sh 'scp -r . root@172.19.241.102:/root/'
+                    sh 'scp -r ../test root@172.19.241.102:/root/springbootdemo'
                     echo "连接后端服务器"
-                    sh 'ssh -tt root@172.19.241.102 cd /root pwd ls'
+                    sh 'ssh -tt root@172.19.241.102 sh ./springbootdemo/build.sh'
 //                     echo "开始构建"
 //                     //构建镜像
 //                     sh 'mvn clean package'
