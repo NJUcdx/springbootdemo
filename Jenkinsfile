@@ -32,7 +32,7 @@ pipeline{
                     sh 'scp -r ../test root@172.19.241.102:/root/'
                     echo "连接后端服务器"
 //                     sh "ssh -tt root@172.19.241.102 'cd /root/test;sh build.sh'"
-                    sh "ssh -tt root@172.19.241.102 'whoima'"
+                    sh "ssh -tt root@172.19.241.102 'whoami'"
 //                     echo "开始构建"
 //                     //构建镜像
 //                     sh 'mvn clean package'
