@@ -30,7 +30,7 @@ pipeline{
                 script{
                     echo "链接后端服务器"
                     sh 'ssh -tt root@172.19.241.102 pwd'
-//                     sh 'pwd'
+                    sh 'pwd'
 //                     echo "开始构建"
 //                     //构建镜像
 //                     sh 'mvn clean package'
