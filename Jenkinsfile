@@ -27,9 +27,11 @@ pipeline{
 
         stage('构建镜像'){
             steps {
-//                 script{
-//                     sh 'ssh root@172.19.241.102 sh /home/suc/common-start.sh /home/suc'
-                    echo "开始构建"
+                script{
+                    echo "链接后端服务器"
+                    sh 'ssh root@172.19.241.102'
+                    sh 'pwd'
+//                     echo "开始构建"
 //                     //构建镜像
 //                     sh 'mvn clean package'
 //                     withSonarQubeEnv('sonarqube') {
@@ -39,7 +41,7 @@ pipeline{
 //                     sh 'docker rm -f ${project}'
 //                     sh 'docker image rm ${image_name}'
 //                     sh 'docker build -f Dockerfile -t springbootdemo .'
-//                 }
+                }
 
             }
         }
