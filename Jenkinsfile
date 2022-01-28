@@ -29,7 +29,7 @@ pipeline{
             steps {
                 script{
                     echo "链接后端服务器"
-                    sh 'ssh -p root -tt root@172.19.241.102'
+                    sh 'ssh -tt root@172.19.241.102'
                     sh 'pwd'
 //                     echo "开始构建"
 //                     //构建镜像
