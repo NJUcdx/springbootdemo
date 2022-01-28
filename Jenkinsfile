@@ -17,10 +17,10 @@ pipeline{
                 deleteDir()
                 //拉取代码
                 git "${REPOSITORY}"
-                sh 'mvn clean package'
-                withSonarQubeEnv('sonarqube') {
-                    sh "mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true -DskipTests=false sonar:sonar -Dproject.settings=sonar-project.properties"
-                }
+//                 sh 'mvn clean package'
+//                 withSonarQubeEnv('sonarqube') {
+//                     sh "mvn org.jacoco:jacoco-maven-plugin:prepare-agent install -Dmaven.test.failure.ignore=true -DskipTests=false sonar:sonar -Dproject.settings=sonar-project.properties"
+//                 }
             }
         }
 
@@ -28,6 +28,8 @@ pipeline{
         stage('构建镜像'){
             steps {
                 script{
+                    echo "查看当前目录"
+                    sh 'pwd'
                     echo "链接后端服务器"
                     sh 'ssh -tt root@172.19.241.102 pwd'
                     sh 'pwd'
